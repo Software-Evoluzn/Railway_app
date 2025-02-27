@@ -1,0 +1,29 @@
+@import url('../font/dm_sans.css');
+body {
+    font-family: "DM Sans", serif;
+    margin: 0px;
+    padding: 0px;
+}
+.pnr_status_box {
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 auto;
+}
+.pnr_container {
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    letter-spacing: 2px;
+}
+.pnr_status_btn {
+    background-color: #ff6600;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 40%;
+}
+.pnr_status_btn:hover {
+    background-color: #e65c00;
+    color: rgb(238, 238, 238);
+}

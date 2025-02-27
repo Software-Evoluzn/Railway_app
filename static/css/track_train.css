@@ -1,0 +1,69 @@
+@import url('../font/dm_sans.css');
+body {
+    font-family: "DM Sans", serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.track_path_container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.track_path_header {
+    background-color: #4f4f4f;
+    font-size: 16px;
+}
+
+@media screen and (max-width:400px) {
+    .track_path_header {
+        font-size: 12px;
+    }
+}
+
+.track_path_reach_time {
+    width: 80px;
+}
+
+.track_path {
+    width: 10px;
+    background-color: #4f4f4f;
+    height: calc(100% + 50px);
+    margin-left: 5rem;
+}
+
+.track_path_dot {
+    width: 8px;
+    height: 8px;
+    background-color: #aaccfe;
+    border-radius: 50%;
+}
+
+.track_path img {
+    background-color: #aaccfe;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.track_path_station_details {
+    margin-left: 10px;
+}
+
+.track_path_reach_box,
+.track_path_departure_box {
+    font-size: small;
+}
+
+
+@media screen and (max-width:400px) {
+    .track_path_station_details {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    .track_path_reach_box,
+    .track_path_departure_box {
+        font-size: 11px;
+    }
+}
+
