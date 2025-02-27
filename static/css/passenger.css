@@ -1,0 +1,22 @@
+@import url('../font/dm_sans.css');
+body {
+    font-family: "DM Sans", serif;
+    margin: 0px;
+    padding: 0px;
+}
+.passenger_header{
+    font-size: large;
+}
+
+.passenger_tbody{
+    font-size: medium;
+}
+
+@media screen and (max-width:400px) {
+    .passenger_header {
+        font-size: 14px;
+    }
+    .passenger_tbody{
+        font-size: small;
+    }
+}

@@ -1,0 +1,335 @@
+
+
+
+@import url('../font/dm_sans.css');
+
+body {
+    font-family: "DM Sans", serif;
+    background: #f4f4f4;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.dashboard_rail_schedule_train_main_div:not(:first-child) {
+    border-top: 1px solid #ACACAC;
+    margin-top: 30px;
+}
+
+.dashboard_rail_help_desk_main_div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    /* Adjusts to fit the screen */
+    grid-gap: 10px;
+    /* padding: 50px 0; */
+    width: 100%;
+    justify-content: center;
+    margin-top: 50px;
+
+    max-width: 700px;
+    margin: auto;
+    font-size: 14px;
+
+}
+
+.dashboard_rail_help_desk_child_div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.dashboard_rail_help_desk_child_div:hover {
+    cursor: pointer;
+
+}
+
+.dashboard_rail_help_desk_title {
+    color: #001F4B;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+}
+
+
+
+
+
+.dashboard_rail_schedule_train_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.dashboard_rail_schedule_train_description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.dashboard_rail_ellipse_icon_div {
+    height: 50px;
+}
+
+
+
+.dashboard_rail_train_schedule_main_div {
+    max-width: 700px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    overflow: auto;
+}
+
+.dashboard_rail_arrival_departure_main_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.dashboard_rail_departure_time {
+    display: flex;
+    align-items: center;
+    color: #A3A3A3;
+    width: 100%;
+    justify-content: center;
+}
+
+.dashboard_rail_time_line {
+    height: 1px;
+    background-color: #A3A3A3;
+    flex-grow: 1;
+}
+
+.dashboard_rail_arrival_time {
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+.dashboard_rail_arrival_departure_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3386FF;
+    margin-top: 10px;
+}
+
+
+
+/* ****************************************************** */
+
+
+
+
+/* *************************************************** */
+/* Scrollbar Styling */
+.dashboard_rail_train_schedule_main_div::-webkit-scrollbar {
+    width: 5px;
+    background-color: #3386FF;
+    /* Width of the scrollbar */
+}
+
+.dashboard_rail_train_schedule_main_div::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Light background */
+    border-radius: 4px;
+}
+
+.dashboard_rail_train_schedule_main_div::-webkit-scrollbar-thumb {
+    background: #c2c2c2;
+    /* Navy blue scrollbar */
+    border-radius: 4px;
+}
+
+.dashboard_rail_train_schedule_main_div::-webkit-scrollbar-thumb:hover {
+    background: #001F4B;
+    /* Darker navy on hover */
+}
+
+/* *********************************************** */
+/* ****************************************************** */
+@media (max-width: 768px) {
+  
+    .dashboard_rail_help_desk_main_div {
+        font-size: 12px;
+
+    }
+}
+
+/* ***********************************************************************************/
+@media (max-width: 768px) {
+    .dashboard_rail_station_upper_div {
+        flex-direction: column;
+        /* Stack elements in a column */
+        text-align: center;
+        /* Center align text */
+    }
+
+    .dashboard_rail_station_upper_div h6 {
+        font-size: 1rem;
+        /* Reduce heading size */
+    }
+
+   
+
+}
+
+
+/* ********************************************************************************** */
+
+
+/* ********************************************css start iocn lat train************************************************* */
+.dashboard_rail_icon_train_plat_main_div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 17px;
+    align-items: center;
+
+}
+
+.dashboard_rail_train_plat_main_div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+@media (max-width: 400px) {
+    .dashboard_rail_icon_train_plat_main_div {
+        /* flex-direction: column; */
+        font-size: 13px;
+        gap: 10px;
+
+
+    }
+
+    .dashboard_rail_train_plat_main_div {
+        /* flex-direction: column; */
+        font-size: 13px;
+        gap: 10px;
+
+
+    }
+    .dashboard_rail_ellipse_icon_div {
+        height: 30px;
+    }
+    .dashboard_rail_arrival_departure_main_div{
+        font-size: 13px;
+
+    }
+    .dashboard_rail_arrival_departure_div{
+        font-size: 13px;
+    }
+}
+
+/* ********************************************css end iocn lat train************************************************* */
+
+
+
+/* **************************************************dashboard blue start******************************************************** */
+
+
+.dashboard_rail_blue_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    background-color: #3386FF;
+    z-index: -1;
+}
+
+.dashboard_rail_current_train_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dashboard_rail_current_city_station_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard_rail_station_current_station {
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.dashboard_rail_station_name {
+    color: #001F4B;
+    font-size: 66px;
+    font-weight: 700;
+}
+
+.dashboard_rail_select_station {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.dashboard_rail_train_img {
+    width: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .dashboard_rail_blue_bg {
+        height: 50vh;
+    }
+
+    .dashboard_rail_station_upper_div {
+        flex-direction: column;
+        /* Stack elements in a column */
+        text-align: center;
+        /* Center align text */
+    }
+
+    .dashboard_rail_station_upper_div h6 {
+        font-size: 1rem;
+        /* Reduce heading size */
+    }
+
+    .dashboard_rail_current_train_img {
+        justify-content: space-around;
+        padding-left: 20px;
+        padding-right: 0px;
+
+    }
+
+    .dashboard_rail_station_name {
+        font-size: 30px;
+        /* Reduce station name size */
+    }
+
+    .dashboard_rail_select_station {
+        color: #ffffff;
+        font-size: 13px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .dashboard_rail_blue_bg {
+        height: 40vh;
+    }
+}
+/* **************************************************dashboard blue end******************************************************** */

@@ -1,0 +1,106 @@
+@import url('../font/dm_sans.css');
+body {
+    font-family: "DM Sans", serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dashboard_rail_blue_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    background-color: #3386FF;
+    z-index: -1;
+}
+
+.dashboard_rail_current_train_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dashboard_rail_current_city_station_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard_rail_station_current_station {
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.dashboard_rail_station_name {
+    color: #001F4B;
+    font-size: 66px;
+    font-weight: 700;
+}
+
+.dashboard_rail_select_station {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.dashboard_rail_train_img {
+    width: 100%;
+}
+.dashboard_rail_station_upper_div{
+    background-color: #3386FF;
+}
+.dashboard_train_parent_div_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .dashboard_rail_blue_bg {
+        height: 50vh;
+    }
+
+    .dashboard_rail_station_upper_div {
+        flex-direction: column;
+        /* Stack elements in a column */
+        text-align: center;
+        /* Center align text */
+    }
+
+    .dashboard_rail_station_upper_div h6 {
+        font-size: 1rem;
+        /* Reduce heading size */
+    }
+
+    .dashboard_rail_current_train_img {
+        justify-content: space-around;
+        padding-left: 20px;
+        padding-right: 0px;
+
+    }
+
+    .dashboard_rail_station_name {
+        font-size: 30px;
+        /* Reduce station name size */
+    }
+
+    .dashboard_rail_select_station {
+        color: #ffffff;
+        font-size: 11px;
+    }
+    .dashboard_rail_station_current_station {
+        font-size: 12px;
+       
+    }
+
+}
+
+@media (max-width: 500px) {
+    .dashboard_rail_blue_bg {
+        height: 40vh;
+    }
+}

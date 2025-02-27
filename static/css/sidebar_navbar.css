@@ -1,0 +1,314 @@
+@import url('../font/dm_sans.css');
+
+body {
+    font-family: "DM Sans", serif;
+    background: #f4f4f4;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    color: #262626;
+    width: 250px;
+    transition: all 0.3s;
+    z-index: 2000;
+    /* Enable scrolling when content overflows */
+    max-height: 100vh;
+    /* Ensure it respects viewport height */
+}
+
+/* *********************************************** */
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+    /* Width of the scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Light background */
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #001F4B;
+    /* Navy blue scrollbar */
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #001F4B;
+    /* Darker navy on hover */
+}
+
+/* *********************************************** */
+
+
+.sidebar .nav-link {
+    color: #262626;
+}
+
+/* Hide sidebar by default on small screens */
+@media (max-width: 767.98px) {
+    .sidebar {
+        transform: translateX(-250px);
+        /* Hide sidebar on mobile */
+    }
+}
+
+/* Show sidebar on screens from tablet (>=768px) */
+@media (min-width: 768px) {
+    .main-content {
+        margin-left: 250px;
+        /* Leave space for the sidebar */
+    }
+}
+
+.sidebar.show {
+    transform: translateX(0);
+    /* Slide in sidebar */
+}
+
+.main-content {
+    transition: all 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+/* Sidebar toggler only visible on small screens */
+.sidebar-toggler {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .sidebar-toggler {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        /* No margin when sidebar is hidden */
+    }
+}
+
+/* Close button inside sidebar */
+.close-btn {
+    font-size: 1.5rem;
+    color: #000000;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: none;
+    /* Hidden by default */
+}
+
+.sidebar.show .close-btn {
+    display: block;
+    /* Show close button when sidebar is visible */
+}
+
+
+
+
+
+/* ***************************************** Prajwal Bhoyar start************************************* */
+
+.menu_item {
+    color: #526581;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sub_options {
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0px;
+    background-color: #ffffff;
+    color: #526581;
+    border-radius: 5px;
+    margin-top: 5px;
+
+}
+
+.sidebar_search_option {
+    border-radius: 5px;
+    background-color: #F2F4F6;
+
+}
+
+.sub_options div:hover {
+    background-color: #3386FF;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+
+}
+
+.side_heading {
+    background-color: #ffffff;
+    color: #8491A5;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.menu_btn {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #8491A5;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* To make active */
+.menu_btn.active {
+    border-radius: 5px;
+    color: white;
+    background-color: #3386FF;
+    border: 1px solid #3386FF;
+}
+
+/* To make svg active */
+.menu_btn.active .platform-icon {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.menu_btn:hover {
+    background-color: #3386FF;
+    color: rgb(255, 255, 255);
+}
+
+.menu_btn:hover img {
+    filter: invert(1000%) brightness(1000%);
+}
+
+.sub_menu.active {
+    background-color: #3386FF;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.platform_list_sub_option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.platform_list {
+    background-color: #f1f9ff;
+    border-radius: 5px;
+}
+
+.sidebar_menu {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.sidebar_menu:hover {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.sidebar_menu:hover {
+    background-color: #3386FF;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+#platform_list_1 {
+    display: none;
+    cursor: pointer;
+}
+
+#platform_list_2 {
+    display: none;
+    cursor: pointer;
+}
+
+.drowdown_icon::after {
+    content: "▼";
+
+}
+
+/* ***************************************** Prajwal Bhoyar start************************************* */
+
+
+/* ***************************************** *navbar css start************************************* */
+
+.dashboard_rail_lang_btn {
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* Wrapper to add the custom arrow */
+.dashboard_rail_all_lang_btn {
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard_rail_all_lang_btn::after {
+    content: " ▼";
+    /* Custom down arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Ensures clicking still works */
+}
+
+.dashboard_rail_other_lang_btn {
+    appearance: none;
+    /* Removes default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    padding-right: 30px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.navbar {
+    background-color: #3386FF;
+}
+
+/* ***************************************** *navbar css end************************************* */

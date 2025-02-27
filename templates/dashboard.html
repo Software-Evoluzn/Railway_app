@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+
+    <link rel="stylesheet" href="../static/css/sidebar_navbar.css">
+
+    <link rel="stylesheet" href="../static/css/drowdown.css">
+
+
+</head>
+
+<body>
+    <!-- Top Navbar start-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <button class="btn btn-dark sidebar-toggler me-2">☰</button>
+            <div class="ms-auto d-flex gap-2">
+                <button class=" dashboard_rail_lang_btn">English</button>
+                <button class=" dashboard_rail_lang_btn">Hindi</button>
+
+                <div class="dashboard_rail_all_lang_btn">
+                    <select class="dashboard_rail_other_lang_btn">
+                        <option value="">Others</option>
+                        <option value="">Tamil</option>
+                        <option value="">Telugu</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Top Navbar end-->
+
+
+    <!-- Sidebar start -->
+    <div class="sidebar p-3" id="sidebar">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <div>
+            <div class="menu_item">
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex flex-row gap-2 justify-content-center text-align-center mx-auto">
+                            <img src="../static/img/sidebar/Welcome.svg" class="search_icon">
+                            <div class="mt-2">
+                                <span class="fw-bold">WELCOME TO!</span>
+                                <span>Bhuvneshwar Road Railway
+                                    Station</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-2 mb-4 mt-4">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <img src="../static/img/sidebar/Search.svg" class="search_icon">
+                            </span>
+                            <input type="text" class="form-control sidebar_search_option" placeholder="Search">
+                        </div>
+                    </div>
+
+                    <!-- Platforms -->
+                    <button class="menu_btn" onclick="">
+                        <img src="../static/img/sidebar/Platforms_SVG.svg" width="20"> Platforms
+                    </button>
+
+
+                    <!-- Modify the toggleList function and menu_btn class -->
+                    <button class="menu_btn mt-3 drowdown_icon" onclick="toggleList('platform_list_1', this)">
+                        <img src="../static/img/sidebar/Platforms_amenities.svg" class="platform-icon"> Platforms
+                        amenities
+                    </button>
+
+                    <div id="platform_list_1" class="platform_list">
+                        <div class="px-2 p-1">
+                            <!-- Modify the toggleSubOptions function and sub_menu class -->
+                            <div class="sidebar_menu p-2 sub_menu" onclick="toggleSubOptions('platform_1', this)"> <img
+                                    src="../static/img/sidebar/Rectangle 110655.svg"> Platform 1 </div>
+                            <div id="platform_1" class="sub_options m-1">
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Ticket Counter</div>
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Ticket Counter</div>
+                            </div>
+                        </div>
+                        <div class="px-2 p-1">
+                            <!-- Modify the toggleSubOptions function and sub_menu class -->
+                            <div class="sidebar_menu p-2 sub_menu" onclick="toggleSubOptions('platform_2', this)"><img
+                                    src="../static/img/sidebar/Rectangle 110655.svg"> Platform 2 </div>
+                            <div id="platform_2" class="sub_options">
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Drinking Water</div>
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Tea Stall</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <button class="menu_btn mt-3" onclick="">
+                        <img src="../static/img/sidebar/Help_Desk.svg" class="platform-icon"> Help Desk
+                    </button>
+                </div>
+
+                <!-- Broad Line Separator -->
+                <hr class="sidebar_thick_line">
+
+                <!-- SAFETY Section -->
+                <div class="menu_section">
+                    <div class="side_heading"><b> SAFETY</b>
+                    </div>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Emergency_Contacts.svg" width="20"> Emergency Contacts
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Police_Station_Locator.svg" width="20"> Police Station Locator
+                    </button>
+                </div>
+
+                <!-- Broad Line Separator -->
+                <hr class="sidebar_thick_line">
+
+                <!-- EXPLORE NASHIK Section -->
+                <div class="menu_section">
+                    <div class="side_heading"><b> EXPLORE NASHIK</b>
+                    </div>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Nashik_Map.svg" width="20"> Nashik Map
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/How_to_travel.svg" width="20"> How to Travel?
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Popular_Places.svg" width="20"> Popular Places
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Sidebar end -->
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="dashboard_rail_blue_bg">
+        </div>
+        <!-- *****************import geo location start************************** -->
+        <div class="dashboard_rail_station_upper_div mt-5">
+            <div class="dashboard_rail_current_train_img">
+                <div class="dashboard_rail_current_city_station_div">
+                    <div>
+                        <h6 class="dashboard_rail_station_current_station">Current Station</h6>
+                        <h1 class="dashboard_rail_station_name">NASHIK</h1>
+                        <div class="dashboard_rail_select_station">(To change, select a station from the menu)</div>
+                    </div>
+
+                </div>
+                <div class="dashboard_train_parent_div_img" >
+                    <img class="dashboard_rail_train_img" src="../static/img/vande_bharat_train_img.png">
+                </div>
+            </div>
+        </div>
+        <!-- *****************import geo location end************************** -->
+
+        <div>
+            <div class="px-4">
+                <div class="p-3 mt-2 dashboard_rail_train_schedule_main_div">
+
+                    <!-- ***************************************************************** -->
+                    <div class="dashboard_rail_schedule_train_main_div">
+                    
+                        <!-- ******************************* -->
+                        <div class="dashboard_rail_icon_train_plat_main_div">
+                            <div class="">
+                                <img class="dashboard_rail_ellipse_icon_div" src="../static/img/schedule_all_train_pic.png">
+                            </div>
+                            <div class="dashboard_rail_train_plat_main_div">
+                                <div>
+                                    #12289 - Duronto Express
+                                </div>
+                                <div>
+                                    PF-2
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ******************************* -->
+
+
+                        <div class="dashboard_rail_arrival_departure_main_div">
+                            <div>
+                                Arrival
+                            </div>
+                            <div class="dashboard_rail_departure_time">
+                                <div class="dashboard_rail_time_line"></div>
+                                <div class="dashboard_rail_arrival_time">12h 30m</div>
+                                <div class="dashboard_rail_time_line"></div>
+                            </div>
+                            <div>
+                                Departure
+                            </div>
+                        </div>
+                        <div class="dashboard_rail_arrival_departure_div">
+                            <div>
+                                08:00 PM
+                            </div>
+                            <div>
+                                08:00 PM
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ******************************************************** -->
+                    <div class="dashboard_rail_schedule_train_main_div">
+                        <div class="dashboard_rail_icon_train_plat_main_div">
+                            <div class="">
+                                <img class="dashboard_rail_ellipse_icon_div" src="../static/img/schedule_all_train_pic.png">
+                            </div>
+                            <div class="dashboard_rail_train_plat_main_div">
+                                <div>
+                                    #12289 - Duronto Express
+                                </div>
+                                <div>
+                                    PF-2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard_rail_arrival_departure_main_div">
+                            <div>
+                                Arrival
+                            </div>
+                            <div class="dashboard_rail_departure_time">
+                                <div class="dashboard_rail_time_line"></div>
+                                <div class="dashboard_rail_arrival_time">12h 30m</div>
+                                <div class="dashboard_rail_time_line"></div>
+                            </div>
+                            <div>
+                                Departure
+                            </div>
+                        </div>
+                        <div class="dashboard_rail_arrival_departure_div">
+                            <div>
+                                08:00 PM
+                            </div>
+                            <div>
+                                08:00 PM
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ******************************************************** -->
+                    <div class="dashboard_rail_schedule_train_main_div">
+                        <div class="dashboard_rail_icon_train_plat_main_div">
+                            <div class="">
+                                <img class="dashboard_rail_ellipse_icon_div" src="../static/img/schedule_all_train_pic.png">
+                            </div>
+                            <div class="dashboard_rail_train_plat_main_div">
+                                <div>
+                                    #12289 - Duronto Express
+                                </div>
+                                <div>
+                                    PF-2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard_rail_arrival_departure_main_div">
+                            <div>
+                                Arrival
+                            </div>
+                            <div class="dashboard_rail_departure_time">
+                                <div class="dashboard_rail_time_line"></div>
+                                <div class="dashboard_rail_arrival_time">12h 30m</div>
+                                <div class="dashboard_rail_time_line"></div>
+                            </div>
+                            <div>
+                                Departure
+                            </div>
+                        </div>
+                        <div class="dashboard_rail_arrival_departure_div">
+                            <div>
+                                08:00 PM
+                            </div>
+                            <div>
+                                08:00 PM
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ******************************************************** -->
+                    <div class="dashboard_rail_schedule_train_main_div">
+                        <div class="dashboard_rail_icon_train_plat_main_div">
+                            <div class="">
+                                <img class="dashboard_rail_ellipse_icon_div" src="../static/img/schedule_all_train_pic.png">
+                            </div>
+                            <div class="dashboard_rail_train_plat_main_div">
+                                <div>
+                                    #12289 - Duronto Express
+                                </div>
+                                <div>
+                                    PF-2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard_rail_arrival_departure_main_div">
+                            <div>
+                                Arrival
+                            </div>
+                            <div class="dashboard_rail_departure_time">
+                                <div class="dashboard_rail_time_line"></div>
+                                <div class="dashboard_rail_arrival_time">12h 30m</div>
+                                <div class="dashboard_rail_time_line"></div>
+                            </div>
+                            <div>
+                                Departure
+                            </div>
+                        </div>
+                        <div class="dashboard_rail_arrival_departure_div">
+                            <div>
+                                08:00 PM
+                            </div>
+                            <div>
+                                08:00 PM
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ******************************************************** -->
+
+
+                </div>
+            </div>
+            <!-- ************************************************ -->
+            <div class="mt-4 px-3">
+                <div class="dashboard_rail_help_desk_main_div">
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/live_status.png">
+                        <div class="dashboard_rail_help_desk_title">Live Status</div>
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/PNR_Status.png">
+                        <div class="dashboard_rail_help_desk_title">PNR Status</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Platform_Amenities.png">
+                        <div class="dashboard_rail_help_desk_title">Platform Amenities</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Railway_Helpline.png">
+                        <div class="dashboard_rail_help_desk_title">Railway Helpline</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Refreshments_Shops.png">
+                        <div class="dashboard_rail_help_desk_title">Refreshments Shops</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Virtual_tour.png">
+                        <div class="dashboard_rail_help_desk_title">Virtual Tour</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Divyanganj_helpline.png">
+                        <div class="dashboard_rail_help_desk_title">Divyanganj Helpline</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Transportation.png">
+                        <div class="dashboard_rail_help_desk_title">Transportation</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/current_location.png">
+                        <div class="dashboard_rail_help_desk_title">Current Location</div>
+
+                    </div>
+                    <div class="dashboard_rail_help_desk_child_div">
+                        <img src="../static/img/helpdesk/Tourist_Places.png">
+                        <div class="dashboard_rail_help_desk_title">Tourist Places</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- ************************************************ -->
+
+
+        </div>
+
+        <!-- *******************footer start***************************** -->
+        <div style="margin-top: 100px;">
+            <footer class="py-2" style="text-align: center;background-color:#3386FF; color: rgb(255, 255, 255); margin-top: auto;">
+                <div> Powered By Evoluzn
+                </div>
+            </footer>
+        </div>
+        <!-- *******************footer end***************************** -->
+
+    </div>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../static/js/navbar_sidebar.js"></script>
+    <script src="../static/js/dropdown.js"></script>
+
+</body>
+
+</html>
