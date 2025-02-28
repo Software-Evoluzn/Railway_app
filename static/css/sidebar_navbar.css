@@ -89,16 +89,6 @@ body {
     display: none;
 }
 
-@media (max-width: 767.98px) {
-    .sidebar-toggler {
-        display: block;
-    }
-
-    .main-content {
-        margin-left: 0;
-        /* No margin when sidebar is hidden */
-    }
-}
 
 /* Close button inside sidebar */
 .close-btn {
@@ -225,7 +215,7 @@ body {
     padding-left: 5px;
     padding-right: 5px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 
 }
@@ -266,11 +256,11 @@ body {
     border: none;
     outline: none;
     border-radius: 6px;
-
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
+
 }
 
 /* Wrapper to add the custom arrow */
@@ -312,3 +302,29 @@ body {
 }
 
 /* ***************************************** *navbar css end************************************* */
+
+@media (max-width: 767.98px) {
+    .sidebar-toggler {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        /* No margin when sidebar is hidden */
+    }
+
+    .dashboard_rail_lang_btn {
+        font-size: smaller;
+
+    }
+
+    .dashboard_rail_all_lang_btn {
+        font-size: smaller;
+    }
+
+    .dashboard_rail_other_lang_btn {
+        padding-left: 10px;
+        padding-right: 22px;
+    }
+
+}

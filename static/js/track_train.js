@@ -147,7 +147,7 @@ function generateStations() {
     });
 }
 
-let now = 3;
+let now = 5;
 
 // Function to update the track_paths visibility
 function updatetrack_paths() {
