@@ -20,11 +20,11 @@ cursor = connection.cursor()
 
 print("Connected to the database.")
 
-# cursor.execute("""CREATE DATABASE `railway`;
-# USE `railway`;""")
+# # cursor.execute("""CREATE DATABASE `railway`;
+# # USE `railway`;""")
 
 
-# ------------------------
+# # ------------------------
 
 # sql_query = """DROP TABLE IF EXISTS `state`;"""
 # cursor.execute(sql_query)  
