@@ -1,0 +1,18 @@
+datadase:
+
+
+1.  First uncomment all code in database.py  and run file on terminal as -- Python database.py . Table created in database
+
+2.  now to import data from that tables in your database
+
+3.  in mysql import all table data . then table data inserted in table.
+      
+      
+4. 
+
+
+
+
+
+
+

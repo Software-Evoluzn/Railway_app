@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta  me="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Map</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/map.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="header d-flex justify-content-between align-items-center p-2">
+        <!-- Menu Icon -->
+
+        <p id="voiceStatus"></p>
+        <p id="voiceResult"><strong></strong> <span></span></p>
+
+    </div>
+
+
+
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-bar d-flex justify-content-around">
+
+        <a href="./map" class="text_decoration"><button class="d-flex flex-column align-items-center" id="backButton">
+                <img src="./static/img/home-2.png" alt="Virtual Tour Icon" loading="lazy" id="backImg"
+                    onclick="goBack()">
+                <span data-en="Home" data-hi="होम" data-mr="होम">Home</span>
+            </button></a>
+
+        <button class="d-flex flex-column align-items-center" onclick="window.location.href='./app-files/index.html'">
+            <img src="./static/img/360.png" alt="Virtual Tour Icon" loading="lazy">
+            <span data-en="Virtual Tour" data-hi="वर्चुअल टूर" data-mr="आभासी टूर">Virtual Tour</span>
+
+        </button>
+
+        <button class="voice_button d-flex flex-column align-items-center" id="voiceSearch">
+            <img src="./static/img/speak.png" alt="" loading="lazy">
+            <!-- <span>Speak</span> -->
+
+        </button>
+
+
+        <button class="d-flex flex-column align-items-center" id="userLocationButton"
+            onclick="window.location.href='/map'">
+            <img src="./static/img/menu_img/user.png" alt="Help Icon" loading="lazy">
+            <span data-en="User Location" data-hi="उपयोगकर्ता स्थान" data-mr="वापरकर्ता स्थान">User Location</span>
+        </button>
+
+        <button class="d-flex flex-column align-items-center" onclick="window.location.href='help_desk.html'">
+            <img src="./static/img/menu_img/HelpDesk.png" alt="Virtual Tour Icon" loading="lazy">
+
+            <a href="./help_desk.html" class="text_decoration"> <span data-en="Help Desk" data-hi="मदद डेस्क"
+                    data-mr="मदत डेस्क">Help Desk</span></a>
+
+        </button>
+
+    </div>
+
+
+    
+    <!-- <script src="./static/js/voice.js"></script> -->
+    
+    <!-- Google Maps API Script -->
+    <!-- <script src="./static/js/map.js"></script> -->
+
+    
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnBmHondgwsA-dzeWtQdRT3X83On_V-wI&libraries=geometry&callback=initMap"></script>
+    
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="application/json" id="pinpoints-data">
+       {{ pinpoints | tojson | safe }}
+    </script>
+   
+</body>
+
+</html>
