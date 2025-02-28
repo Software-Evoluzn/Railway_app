@@ -1,0 +1,590 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#map {
+    width: 100%;
+    height: calc(100vh - 60px); /* Map occupies the height above the footer */
+}
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background-color: #ffffff; /* Matches the blue bar color */
+    color: #484C52;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);  */
+    z-index: 1000;
+}
+.bottom-bar button {
+    background: none;
+    color: #484C52;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+.bottom-bar button:hover {
+    text-decoration: underline;
+}
+.voice-status {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: none;
+}
+.voice_button{
+  margin-bottom: 65px;
+}
+
+.voice_button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .voice_button {
+      width: 75px;
+      height: 75px;
+    }
+}
+
+@media (max-width: 2600px) {
+    .voice_button {
+      width: 75px;
+      height: 75px;
+    }
+}
+
+@media (max-width: 992px) {
+    .voice_button {
+      width: 75px;
+      height: 75px;
+    }
+}
+
+@media (max-width: 768px) {
+    .voice_button {
+      width: 75px;
+      height: 75px;
+    }
+}
+
+@media (max-width: 576px) {
+    .voice_button {
+        width: 75px;
+        height: 75px;
+    }
+}
+/* Sidebar Styles */
+.sidebar {
+position: fixed;
+top: 0;
+left: -250px; /* Hidden initially */
+width: 230px;
+height: 100%;
+background-color: #ffffff; /* Matches blue bar color */
+color: white;
+padding: 15px;
+box-shadow: 2px 0 2px rgba(128, 128, 128, 0.192);
+transition: right 0.3s ease-in-out;
+z-index: 1500;
+overflow-y: scroll;
+}
+.sidebar.open {
+left: 0; /* Show the sidebar */
+}
+
+.sidebar h3 {
+margin-top: 0;
+text-align: left;
+font-size: 22px;
+margin-bottom: 15px;
+}
+
+.menu-item {
+margin-bottom: 15px;
+margin-top: 25px;
+}
+
+.menu-btn {
+width: 100%;
+background-color: #ffffff; /* Slightly darker blue */
+color: #526581;
+border: none;
+
+text-align: left;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease-in-out;
+
+}
+
+.menu-btn.active {
+    background-color: #007AFF; /* Blue color when active */
+    color: white; /* Change text color to white when active */
+}
+
+.menu-btn img {
+    margin-right: 10px; /* Adds space between the image and the text */
+    vertical-align: middle; /* Ensures the image is vertically aligned with the text */
+}
+
+
+
+.menu-btn i {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+    margin-left: 5px;
+}
+
+.custom-hr {
+    border: 0;
+    border-top: 2px solid #D9D9D9; /* Adjust the grey color as needed */
+    opacity: 0.5; /* Optional: Makes the line a bit lighter */
+}
+
+
+
+.menu-list {
+list-style: none;
+/* padding: 10px 15px; */
+background-color: #E2F5FF; /* Background for dropdown list */
+border-radius: 5px;
+margin-top: 5px;
+display: none; /* Initially hidden */
+}
+
+.menu-list.open {
+display: block; /* Show the list */
+}
+
+.menu-list li {
+padding: 5px 0;
+font-size: 15px;
+color: #526581;
+
+}
+
+.menu-list li a {
+color: #526581;
+text-decoration: none;
+font-size: 15px;
+}
+
+.menu-list li a:hover {
+text-decoration: underline;
+}
+
+/* Add spacing between elements */
+.sidebar ul {
+padding: 0;
+}
+
+.sidebar ul li {
+margin: 10px 0; /* Space between list items */
+padding: 10px;  /* Space inside each list item */
+font-size: 15PX;
+font-weight: 800;
+
+}
+
+.safety_text {
+    color: #526581;          /* Sets the text color */
+    font-weight: bold;       /* Makes the text bold */
+    font-size: medium;       /* Sets the font size to medium */
+    font-size: 16px;
+}
+
+.sidebar ul li:hover {
+background-color: #007AFF; /* Optional: Highlight on hover */
+color: #ffffff;
+font-size: larger;
+}
+
+.sidebar ul li a {
+color: #526581;
+text-decoration: none;
+font-size: 15px;
+display: block; /* Makes the entire list item clickable */
+}
+
+/* Menu Icon */
+.menu-icon {
+    position: fixed;
+    top: 5px;
+    left: 15px;
+    z-index: 1600;
+    cursor: pointer;
+
+    padding-top: 10px;
+
+}
+
+.submenu_title {
+    color: #2B3674;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.submenu_subtitle {
+    color: #2B3674;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.menu-icon.right {
+left: calc(200px - 8px); /* Adjust for sidebar width (250px) */
+transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition for position and color */
+}
+
+.header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+
+z-index: 1700;
+
+display: flex;
+align-items: center;
+}
+.search-container {
+position: relative;
+flex-grow: 1;
+margin-left: auto;
+max-width: 40px; /* Initially just the icon width */
+transition: max-width 0.4s ease-in-out; /* Smooth expansion */
+
+height: 40px; /* Ensures a uniform height for container */
+
+
+}
+
+.search-container:focus-within {
+max-width: 300px; /* Expand when focused */
+}
+
+.search-input {
+width: 100%;
+height: 100%;
+padding: 18px 12px;
+border: 1px solid #ccc;
+border-radius: 20px; /* Rounded edges for better UI */
+outline: none;
+font-size: 14px;
+opacity: 0; /* Hidden initially */
+transition: opacity 0.3s ease-in-out, width 0.4s ease-in-out;
+}
+
+.search-container:focus-within .search-input {
+opacity: 1; /* Show when focused */
+}
+
+.search-icon {
+position: absolute;
+
+cursor: pointer;
+font-size: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100%;
+width: 40px;
+}
+
+.search-icon img {
+height: 30px; /* Adjust icon size */
+width: 30px; /* Keep proportions consistent */
+
+}
+
+/* CSS to shift the closing icon upwards */
+.icon-close-shift {
+    position: absolute; /* Position it relative to the sidebar */
+    top: 0px; /* Adjust as needed for vertical placement */
+    right: 10px; /* Align to the right inside the sidebar */
+    height: 30px; /* Adjust size as necessary */
+    cursor: pointer; /* Make it clickable */
+    z-index: 1600; /* Ensure it stays above other content */
+
+}
+
+.highlight {
+background-color: #f0f8ff; /* Light blue */
+color: #000; /* Black text */
+font-weight: bold;
+}
+
+.marker-highlight {
+background-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue */
+border: 2px solid #007bff; /* Solid blue border */
+border-radius: 50%;
+padding: 10px;
+}
+
+.back-button {
+    position: relative;
+    margin-right: 15px; /* Add space between the back button and other elements */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    top: 15px;
+  }
+  
+  .back-button img {
+    height: 40px; /* Adjust button size */
+    transition: transform 0.2s ease; /* Add a hover effect */
+  }
+  
+  .back-button img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+
+  .menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list > li {
+    cursor: pointer;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.submenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 100%; /* Position it below the parent list item */
+    left: 0; /* Align it to the left of the parent */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    width: 200px; /* Set width of the submenu */
+    color: #526581;
+}
+
+.submenu li {
+    padding: 8px 12px;
+    font-size: 12px; /* Adjust this value to make the font smaller */
+    color: #526581 !important; /* Force black text */
+    text-transform: capitalize; 
+    font-weight: bold;
+
+}
+
+.submenu li:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+
+.menu-list > li:hover .submenu {
+    display: block; /* Show submenu on hover */
+    font-size: 15px;
+    color: #526581;
+}
+
+
+.language-tabs .language-tab {
+    font-size: 1rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.language-tabs .language-tab:hover {
+    color: #007bff; /* Blue color on hover */
+}
+
+.whereami
+{
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+
+}
+
+/* CSS for highlighting */
+.highlight-background {
+    background-color: grey;
+    color: white;  /* Optional: Change text color for better visibility */
+}
+
+
+/* Initial state of the menu icon */
+#menuIcon {
+    display: inline-block;
+
+
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Hide the menu icon when the sidebar is open */
+  #menuIcon.hidden {
+    display: none; /* Hides the icon */
+  }
+  
+  /* Add hamburger menu style (3 bars) */
+  #menuIcon::before,
+  #menuIcon::after {
+    content: '';
+    position: absolute;
+
+
+    transition: transform 0.3s ease-in-out;
+  }
+  
+
+  /* Icon changes when the sidebar is open (close icon) */
+  #menuIcon.icon-close {
+    background-color: transparent; /* Hide the middle bar */
+  }
+  
+  #menuIcon.icon-close::before {
+    transform: rotate(45deg); /* Rotate top bar to form close "X" */
+    top: 0;
+  }
+  
+  #menuIcon.icon-close::after {
+    transform: rotate(-45deg); /* Rotate bottom bar to form close "X" */
+    top: 0;
+  }
+  
+  /* Optional: Sidebar appearance changes when it's open */
+  #sidebar.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  
+
+  #distanceBox {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 12px; /* Smaller font size */
+    width: 250px; /* Set a fixed width for the box */
+    display: flex;
+    align-items: center; /* Vertically center the icon and text */
+    justify-content: center; /* Center the content horizontally */
+    gap: 10px; /* Space between the icon and text */
+}
+
+#distanceBox i {
+    font-size: 16px; /* Icon size */
+    color: #FF5C00; /* Icon color */
+}
+
+
+/* Language dropdown styling */
+.language-dropdown {
+    position: absolute; /* Positioning it absolutely within the header */
+    right: 20px; /* Distance from the right edge */
+    top: 50%; /* Aligns it vertically in the center */
+
+}
+
+.language-dropdown select {
+    padding: 7px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #3789FF;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.search-bar {
+    position: relative;
+    color: #526581;
+    
+}
+
+.search-bar input {
+    padding-left: 40px; /* Adjust space for icon */
+    background-color: #F2F4F6;
+    color: #526581;
+}
+
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #526581; /* Search icon color */
+}
+
+/* Shilpasearch */
+
+.search-suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    /* border: 1px solid #ccc; */
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+.text_decoration{
+    text-decoration: none;
+    color: #484C52;
+}
+
+.list {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    width: 150px;
+    position: absolute;
+    background: #fff;
+}
+
+.list.open {
+    display: block;
+}
+
+.list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.list li:hover {
+    background: #f0f0f0;
+}
