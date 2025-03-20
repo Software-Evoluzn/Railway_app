@@ -356,19 +356,25 @@
             <div class="mt-4 px-3">
                 <div class="dashboard_rail_help_desk_main_div">
                     <div class="dashboard_rail_help_desk_child_div">
-                        <img src="../static/img/helpdesk/live_status.png">
+                        <a href="{{url_for('live_status')}}"> <img src="../static/img/helpdesk/live_status.png" alt="Live Status"></a>
+                       
                         <div class="dashboard_rail_help_desk_title">Live Status</div>
                     </div>
+
                     <div class="dashboard_rail_help_desk_child_div">
-                        <img src="../static/img/helpdesk/PNR_Status.png">
+                        <a href="{{url_for('PNR_status')}}"><img src="../static/img/helpdesk/PNR_Status.png" alt="PNR Status"></a>
+                     
                         <div class="dashboard_rail_help_desk_title">PNR Status</div>
 
                     </div>
                     <div class="dashboard_rail_help_desk_child_div">
-                        <img src="../static/img/helpdesk/Platform_Amenities.png">
+                        <a href="{{ url_for('map_page') }}">
+                            <img src="../static/img/helpdesk/Platform_Amenities.png" alt="Platform Amenities">
+                        </a>
                         <div class="dashboard_rail_help_desk_title">Platform Amenities</div>
 
                     </div>
+
                     <div class="dashboard_rail_help_desk_child_div">
                         <img src="../static/img/helpdesk/Railway_Helpline.png">
                         <div class="dashboard_rail_help_desk_title">Railway Helpline</div>
@@ -394,8 +400,9 @@
                         <div class="dashboard_rail_help_desk_title">Transportation</div>
 
                     </div>
+                   
                     <div class="dashboard_rail_help_desk_child_div">
-                        <img src="../static/img/helpdesk/current_location.png">
+                        <a href="{{ url_for('Current_location') }}"> <img src="../static/img/helpdesk/live_status.png" alt="Current Location"></a>
                         <div class="dashboard_rail_help_desk_title">Current Location</div>
                     </div>
                     <div class="dashboard_rail_help_desk_child_div">
@@ -428,6 +435,8 @@
 
     <script src="../static/js/navbar_sidebar.js"></script>
     <script src="../static/js/dropdown.js"></script>
+   
+    <!-- <script src="../static/js/user_location.js"></script> -->
 
 </body>
 
