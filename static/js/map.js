@@ -1,5 +1,4 @@
 window.initMap = function () {
-
     const customStyle = [
         { "featureType": "water", "stylers": [{ "color": "#50B6FF" }] },
         { "featureType": "landscape", "stylers": [{ "color": "#F1F9FF" }] },
@@ -35,62 +34,126 @@ window.initMap = function () {
     // Get the pinpoints data from the HTML script element
     var pinpoints = JSON.parse(document.getElementById("pinpoints-data").textContent);
 
-    pinpoints.forEach(point => {
-        var iconUrl = point.category; // Use the category field as the icon URL
+    console.log("here pinpoints----------->", pinpoints)
 
-        // Create the marker icon (image)
-        var markerIcon = document.createElement('img');
-        markerIcon.src = iconUrl;
-        markerIcon.style.width = '40px';  // Adjust size as needed
-        markerIcon.style.height = '40px'; // Adjust size as needed
+    // Create markers from pinpoints
+    let markers = []; // Initialize the global markers array
 
-        // Create a div to hold the marker and the place name
-        var markerContainer = document.createElement('div');
-        markerContainer.style.position = 'absolute';
-        markerContainer.style.textAlign = 'center';
+    function createMarkers(points) {
+        clearMarkers(); // Clear existing markers before creating new ones
 
-        // Append the icon to the container
-        markerContainer.appendChild(markerIcon);
+        console.log("Here one point ----> ",points)
 
-        // Create the place name element and append it below the icon
-        var placeName = document.createElement('div');
-        placeName.innerHTML = point.place_name;
-        placeName.style.fontSize = '12px';
-        placeName.style.fontWeight = '600';
-        placeName.style.marginTop = '5px';
-        placeName.style.color = '#2D336B';
-        markerContainer.appendChild(placeName);
+        points.forEach(point => {
+            var iconUrl = point.category; // Use the category field as the icon URL
 
-        // Create a custom marker using the div container
-        var marker = new google.maps.Marker({
-            position: { lat: parseFloat(point.latitude), lng: parseFloat(point.longitude) },
-            map: map,
-            title: point.place_name,
-            icon: { // Use a blank SVG icon (this hides the default marker icon)
-                url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"></svg>'),
-                anchor: new google.maps.Point(20, 40),  // Anchor at the bottom center
-            }
+            // Create the marker icon (image)
+            var markerIcon = document.createElement('img');
+            markerIcon.src = iconUrl;
+            markerIcon.style.width = '30px'; // Adjust size as needed
+            markerIcon.style.height = '30px'; // Adjust size as needed
+
+            // Create a div to hold the marker and the place name
+            var markerContainer = document.createElement('div');
+            markerContainer.style.position = 'absolute';
+            markerContainer.style.textAlign = 'center';
+
+            // Append the icon to the container
+            markerContainer.appendChild(markerIcon);
+
+            // Create the place name element and append it below the icon
+            var placeName = document.createElement('div');
+            placeName.innerHTML = point.place_name;
+            placeName.style.fontSize = '7px';
+            placeName.style.fontWeight = '600';
+            placeName.style.marginTop = '5px';
+            placeName.style.color = '#2D336B';
+            markerContainer.appendChild(placeName);
+
+            // Create a custom marker using the div container
+            var marker = new google.maps.Marker({
+                position: { lat: parseFloat(point.latitude), lng: parseFloat(point.longitude) },
+                map: map,
+                title: point.place_name,
+                icon: { 
+                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"></svg>'),
+                    anchor: new google.maps.Point(20, 40), // Anchor at the bottom center
+                }
+            });
+
+            // Add the custom marker to the map by overlaying it on the correct position
+            var overlay = new google.maps.OverlayView();
+            overlay.onAdd = function () {
+                var layer = this.getPanes().overlayLayer;
+                layer.appendChild(markerContainer);
+            };
+
+            overlay.draw = function () {
+                var projection = this.getProjection();
+                var position = projection.fromLatLngToDivPixel(marker.getPosition());
+                markerContainer.style.left = (position.x - markerContainer.offsetWidth / 2) + 'px'; // Center horizontally
+                markerContainer.style.top = (position.y - markerContainer.offsetHeight) + 'px'; // Place name below the icon
+            };
+
+            overlay.setMap(map);
+
+            // Add marker to global array for tracking visibility
+            markers.push({ marker, overlay, markerContainer });
         });
+    }
 
-        // Add the custom marker to the map by overlaying it on the correct position
-        var overlay = new google.maps.OverlayView();
-        overlay.onAdd = function () {
-            var layer = this.getPanes().overlayLayer;
-            layer.appendChild(markerContainer);
-        };
+    // Function to handle zoom level and display markers accordingly
+    function handleZoomChanged() {
+        const zoomLevel = map.getZoom();
+        let visiblePinpoints = [];
 
-        overlay.draw = function () {
-            var projection = this.getProjection();
-            var position = projection.fromLatLngToDivPixel(marker.getPosition());
-            markerContainer.style.left = (position.x - markerContainer.offsetWidth / 2) + 'px'; // Center horizontally
-            markerContainer.style.top = (position.y - markerContainer.offsetHeight) + 'px'; // Place name below the icon
-        };
+        // Define the ranges for showing markers
+        if (zoomLevel >= 21) {
+            visiblePinpoints = pinpoints; // Show all markers
+        } 
+        else if (zoomLevel >= 20 && zoomLevel < 21) {
+            visiblePinpoints = pinpoints.slice(0, 40);
+        } 
+        else if (zoomLevel >= 19 && zoomLevel < 20) {
+            visiblePinpoints = pinpoints.slice(0, 30);
+        } 
+        else if (zoomLevel >= 18 && zoomLevel < 19) {
+            visiblePinpoints = pinpoints.slice(0, 20); // Show the first 20 markers
+        } 
+        else if (zoomLevel >= 15 && zoomLevel < 18) {
+            visiblePinpoints = pinpoints.slice(0, 10); // Show the first 10 markers
+        } 
+        else {
+            visiblePinpoints = []; // Hide all markers
+        }
 
-        overlay.setMap(map);
-    });
+        clearMarkers(); // Clear existing markers
+        if (visiblePinpoints.length > 0) {
+            createMarkers(visiblePinpoints); // Create markers based on zoom level
+        }
+    }
+
+    // Function to clear all existing markers and associated overlays from the map
+    function clearMarkers() {
+        if (markers && markers.length > 0) {
+            markers.forEach(({ marker, overlay, markerContainer }) => {
+                marker.setMap(null); // Remove the marker
+                markerContainer.remove(); // Remove the custom HTML marker container from the DOM
+            });
+        }
+        markers = []; // Clear the markers array
+    }
+
+    // Set an event listener for zoom changes
+    google.maps.event.addListener(map, 'zoom_changed', handleZoomChanged);
+
+    // Initial call to display markers based on initial zoom level
+    handleZoomChanged();
 
     console.log('pinpoints-------', pinpoints);
 };
+
+
 
 
 

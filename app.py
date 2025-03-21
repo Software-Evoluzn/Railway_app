@@ -84,12 +84,14 @@ def map_page():
     
     pinpoints = cursor.fetchall()
     connection.close()
+    print("Hello guys:")
 
     # Get query params from URL
     selected_lat = request.args.get("lat")
     selected_lng = request.args.get("lng")
     selected_amenity = request.args.get("amenity")
-    print("Selected Amenity:", selected_amenity,selected_lat,selected_lng) 
+    selected_city = request.args.get("city")
+    print("Selected Amenity:", selected_amenity,selected_lat,selected_lng, selected_city) 
 
 
     # Convert to list of dicts
@@ -112,7 +114,7 @@ def map_page():
     if selected_lat and selected_lng and selected_amenity:
         pinpoint_list = [
             p for p in pinpoint_list if
-            p["place_name"] == selected_amenity.lower() and
+            p["place_name"] == selected_amenity and
             float(p["latitude"]) == float(selected_lat) and
             float(p["longitude"]) == float(selected_lng)
         ]
@@ -160,8 +162,11 @@ def railway_helpline():
 
 @app.route('/platforms_amenities')
 def platforms_amenities():
+    city = request.args.get('city')
     connection = Database.connect_dbs()
     cursor = connection.cursor()
+
+    print("here cityname is", city)
 
     cursor.execute("""
         SELECT 

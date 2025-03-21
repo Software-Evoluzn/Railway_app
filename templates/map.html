@@ -13,24 +13,194 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./static/css/map.css">
+    
+    <link rel="stylesheet" href="../static/css/sidebar_navbar.css">
+    <link rel="stylesheet" href="../static/css/drowdown.css">
+
+    <link rel="stylesheet" href="../static/css/user_location.css">
 </head>
 
 <body>
-    <!-- Header Section -->
-    <div class="header d-flex justify-content-between align-items-center p-2">
-        <!-- Menu Icon -->
+    <!-- Top Navbar start-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <button class="btn btn-light sidebar-toggler me-2 p-0"><img src="../static/img/nav_button.png"
+                    alt=""></button>
+            <div class="ms-auto d-flex gap-2">
+                <button class="dashboard_rail_lang_btn">English</button>
+                <button class="dashboard_rail_lang_btn">Hindi</button>
 
-        <p id="voiceStatus"></p>
-        <p id="voiceResult"><strong></strong> <span></span></p>
+                <div class="dashboard_rail_all_lang_btn">
+                    <select class="dashboard_rail_other_lang_btn">
+                        <option value="">Others</option>
+                        <option value="">Tamil</option>
+                        <option value="">Telugu</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Top Navbar end-->
 
+
+    <!-- Sidebar start -->
+    <div class="sidebar p-3" id="sidebar">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <div>
+            <div class="menu_item">
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex flex-row gap-2 justify-content-center text-align-center mx-auto">
+                            <img src="../static/img/sidebar/Welcome.svg" class="search_icon">
+                            <div class="mt-2">
+                                <span class="fw-bold">WELCOME TO!</span>
+                                <span>Bhuvneshwar Road Railway
+                                    Station</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-2 mb-4 mt-4">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <img src="../static/img/sidebar/Search.svg" class="search_icon">
+                            </span>
+                            <input type="text" class="form-control sidebar_search_option" placeholder="Search">
+                        </div>
+                    </div>
+
+                    <!-- Platforms -->
+                    <button class="menu_btn" onclick="">
+                        <img src="../static/img/sidebar/Platforms_SVG.svg" width="20"> Platforms
+                    </button>
+
+
+                    <!-- Modify the toggleList function and menu_btn class -->
+                    <button class="menu_btn mt-3 drowdown_icon" onclick="toggleList('platform_list_1', this)">
+                        <img src="../static/img/sidebar/Platforms_amenities.svg" class="platform-icon"> Platforms
+                        amenities
+                    </button>
+
+                    <div id="platform_list_1" class="platform_list">
+                        <div class="px-2 p-1">
+                            <!-- Modify the toggleSubOptions function and sub_menu class -->
+                            <div class="sidebar_menu p-2 sub_menu" onclick="toggleSubOptions('platform_1', this)"> <img
+                                    class="me-2" src="../static/img/sidebar/Rectangle 110655.svg"> Platform 1 </div>
+                            <div id="platform_1" class="sub_options m-1">
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Ticket Counter</div>
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Ticket Counter</div>
+                            </div>
+                        </div>
+                        <div class="px-2 p-1">
+                            <!-- Modify the toggleSubOptions function and sub_menu class -->
+                            <div class="sidebar_menu p-2 sub_menu" onclick="toggleSubOptions('platform_2', this)"><img
+                                    class="me-2" src="../static/img/sidebar/Rectangle 110655.svg"> Platform 2 </div>
+                            <div id="platform_2" class="sub_options">
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Drinking Water</div>
+                                <div class="p-2 platform_list_sub_option"><img
+                                        src="../static/img/sidebar/Group 1000004628.svg">
+                                    Tea Stall</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <button class="menu_btn mt-3" onclick="">
+                        <img src="../static/img/sidebar/Help_Desk.svg" class="platform-icon"> Help Desk
+                    </button>
+                </div>
+
+                <!-- Broad Line Separator -->
+                <hr class="sidebar_thick_line">
+
+                <!-- SAFETY Section -->
+                <div class="menu_section">
+                    <div class="side_heading"><b> SAFETY</b>
+                    </div>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Emergency_Contacts.svg" width="20"> Emergency Contacts
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Police_Station_Locator.svg" width="20"> Police Station Locator
+                    </button>
+                </div>
+
+                <!-- Broad Line Separator -->
+                <hr class="sidebar_thick_line">
+
+                <!-- EXPLORE NASHIK Section -->
+                <div class="menu_section">
+                    <div class="side_heading"><b> EXPLORE NASHIK</b>
+                    </div>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Nashik_Map.svg" width="20"> Nashik Map
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/How_to_travel.svg" width="20"> How to Travel?
+                    </button>
+
+                    <button class="menu_btn mt-3">
+                        <img src="../static/img/sidebar/Popular_Places.svg" width="20"> Popular Places
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Sidebar end -->
+
+    <div class="user_location_container">
+        <div class="map_container" id="map"></div>
+        <div class="bottom_navigation position-relative d-flex flex-row justify-content-between align-items-center">
+            <div class="nav_div">
+                <a href="/" class=" d-flex flex-column align-items-center">
+                    <img src="../static/img/home.png" alt="">
+                    <p>Home</p>
+                </a>
+            </div>
+            <div class="nav_div d-flex flex-column align-items-center">
+                <a href="#" class=" d-flex flex-column align-items-center">
+                    <img class="toggle-img" src="../static/img/360.png" alt=""
+                        data-img-src="../static/img/360_icon_blue.png">
+                    <p>Virtual Tour</p>
+                </a>
+            </div>
+            <div class="nav_div speak position-relative">
+                <img class="position-absolute" src="../static/img/speak.png" alt="">
+            </div>
+            <div class="nav_div d-flex flex-column align-items-center">
+                <a href="#" class=" d-flex flex-column align-items-center">
+                    <img class="toggle-img" src="../static/img/search-normal.png" alt=""
+                        data-img-src="../static/img/search_icon_blue.png">
+                    <p>Search</p>
+                </a>
+            </div>
+            <div class="nav_div d-flex flex-column align-items-center">
+                <a href="#" class=" d-flex flex-column align-items-center">
+                    <img class="toggle-img" src="../static/img/help1.png" alt=""
+                        data-img-src="../static/img/help_desk_blue.png">
+                    <p>Help Desk</p>
+                </a>
+            </div>
+        </div>
     </div>
 
-
-
-
     <!-- Map container -->
-    <div id="map"></div>
+    <!-- <div id="map"></div> -->
 
     <!-- Bottom Navigation Bar -->
   
@@ -42,7 +212,11 @@
     <!-- Google Maps API Script -->
     <!-- <script src="./static/js/map.js"></script> -->
 
+
     
+    <script src="../static/js/navbar_sidebar.js"></script>
+    <script src="../static/js/dropdown.js"></script>
+
     <script src="{{ url_for('static', filename='js/map.js') }}"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnBmHondgwsA-dzeWtQdRT3X83On_V-wI&libraries=geometry&callback=initMap"></script>
