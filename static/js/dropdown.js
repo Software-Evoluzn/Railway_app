@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/platforms_amenities')
+    
+    var cityName = document.getElementById("current_city").textContent;
+
+    fetch(`/platforms_amenities?city=${encodeURIComponent(cityName)}`)
         .then(response => response.json())
         .then(data => {
             let platformMenu = document.getElementById("platform_list_1");
@@ -39,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function redirectToMap(lat, lng, amenityName) {
-    window.location.href = `/map?lat=${lat}&lng=${lng}&amenity=${encodeURIComponent(amenityName)}`;
+    window.location.href = `/map?lat=${lat}&lng=${lng}&amenity=${encodeURIComponent(amenityName)}&city=${encodeURIComponent(amenityName)}`;
 }
 
 

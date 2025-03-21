@@ -2,10 +2,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-#map {
+/* #map {
     width: 100%;
-    height: calc(100vh - 60px); /* Map occupies the height above the footer */
-}
+    height: calc(100vh - 60px);
+} */
 .bottom-bar {
     position: fixed;
     bottom: 0;
