@@ -1,3 +1,52 @@
+document.addEventListener("DOMContentLoaded", function () {
+    
+    var cityName = "Nashik";
+
+    fetch(`/platforms_amenities?city=${encodeURIComponent(cityName)}`)
+        .then(response => response.json())
+        .then(data => {
+            let platformMenu = document.getElementById("platform_list_1");
+            platformMenu.innerHTML = ""; // Clear existing list
+
+            data.forEach(platform => {
+                let platformId = `platform_${platform.platform_number.replace(/\s/g, "_")}`; // Sanitize ID
+                let platformNumber = platform.platform_number;
+                let amenities = platform.amenities || [];
+
+                let platformDiv = document.createElement("div");
+                platformDiv.className = "px-2 p-1";
+
+                let amenitiesHTML = amenities.map(amenity => `
+                  <div class="p-2 platform_list_sub_option" 
+                    onclick="redirectToMap(${amenity.latitude}, ${amenity.longitude}, '${amenity.name}')">
+                    <img src="../static/img/sidebar/Group 1000004628.svg"> ${amenity.name}
+                  </div>
+                `).join("");
+
+                platformDiv.innerHTML = `
+                    <div class="sidebar_menu p-2 sub_menu" onclick="toggleSubOptions('${platformId}', this)">
+                        <img class="me-2" src="../static/img/sidebar/Rectangle 110655.svg">
+                        ${platformNumber}
+                    </div>
+                    <div id="${platformId}" class="sub_options m-1">
+                        ${amenities.length > 0 ? amenitiesHTML : "<div class='p-2'>No amenities available</div>"}
+                    </div>
+                `;
+
+                platformMenu.appendChild(platformDiv);
+            });
+        })
+        .catch(error => console.error("Error fetching platforms:", error));
+});
+
+
+
+function redirectToMap(lat, lng, amenityName) {
+    window.location.href = `/map?lat=${lat}&lng=${lng}&amenity=${encodeURIComponent(amenityName)}&city=${encodeURIComponent(amenityName)}`;
+}
+
+
+
 window.initMap = function () {
     const customStyle = [
         { "featureType": "water", "stylers": [{ "color": "#50B6FF" }] },
@@ -64,7 +113,7 @@ window.initMap = function () {
             // Create the place name element and append it below the icon
             var placeName = document.createElement('div');
             placeName.innerHTML = point.place_name;
-            placeName.style.fontSize = '7px';
+            placeName.style.fontSize = '10px';
             placeName.style.fontWeight = '600';
             placeName.style.marginTop = '5px';
             placeName.style.color = '#2D336B';

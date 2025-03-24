@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     
     var cityName = document.getElementById("current_city").textContent;
-
     fetch(`/platforms_amenities?city=${encodeURIComponent(cityName)}`)
         .then(response => response.json())
         .then(data => {
